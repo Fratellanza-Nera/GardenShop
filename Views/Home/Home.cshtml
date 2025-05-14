@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Garden Store</title>
+    <link rel="stylesheet" href="~/Content/Home.css"/>
+</head>
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Welcome to the Veralyn!</h1>
+
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="~/img/trees.png" class="card-img-top" alt="Trees">
+                <div class="card-body">
+                    <h5 class="card-title">Trees</h5>
+                    <p class="card-text">Fruit and ornamental trees for your garden.</p>
+                    <a href="/Categories/Trees" class="btn btn-success">View</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="~/img/flowers.jpg" class="card-img-top" alt="Flowers">
+                <div class="card-body">
+                    <h5 class="card-title">Flowers</h5>
+                    <p class="card-text">Brighten your yard with beautiful flowers.</p>
+                    <a href="/Categories/Flowers" class="btn btn-success">View</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="~/img/tools.jpg" class="card-img-top" alt="Tools">
+                <div class="card-body">
+                    <h5 class="card-title">Garden Tools</h5>
+                    <p class="card-text">Everything you need to take care of your plants.</p>
+                    <a href="/Categories/Tools" class="btn btn-success">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
