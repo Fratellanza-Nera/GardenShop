@@ -12,5 +12,6 @@ namespace GardenShop.Models
         public ApplicationDbContext() : base("DefaultConnection") { }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
