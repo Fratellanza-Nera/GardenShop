@@ -1,45 +1,48 @@
-﻿using System;
+﻿using GardenShop.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc;
 
-namespace GardenShop.Controllers
+public class AutentificationController : Controller
 {
-    public class AutentificationController : Controller
+    private readonly UserService _userService = new UserService();
+
+    public ActionResult Login() => View();
+
+    [HttpPost]
+    public ActionResult Login(string username, string password)
     {
-        // GET: /Autentification/Login
-        public ActionResult Login()
+        if (_userService.Login(username, password))
         {
-            return View();
+            Session["Username"] = username;
+            return RedirectToAction("Index", "Home");
         }
 
-        // GET: /Autentification/Register
-        public ActionResult Register()
+        ViewBag.Error = "Invalid username or password.";
+        return View();
+    }
+
+    public ActionResult Register() => View();
+
+    [HttpPost]
+    public ActionResult Register(string username, string password)
+    {
+        if (_userService.Register(username, password))
         {
-            return View();
+            Session["Username"] = username;
+            return RedirectToAction("Index", "Home");
         }
 
-        // POST: /Autentification/Login
-        [HttpPost]
-        public ActionResult Login(string username, string password)
-        {
-            // Здесь логика авторизации
-            if (username == "admin" && password == "admin")
-                return RedirectToAction("Index", "Home");
+        ViewBag.Error = "Username already exists.";
+        return View();
+    }
 
-            ViewBag.Error = "Invalid credentials";
-            return View();
-        }
-
-        // POST: /Autentification/Register
-        [HttpPost]
-        public ActionResult Register(string username, string password)
-        {
-            // Здесь логика регистрации (например, сохранить в БД)
-            ViewBag.Message = "Account created!";
-            return RedirectToAction("Login");
-        }
+    public ActionResult Logout()
+    {
+        Session.Clear();
+        return RedirectToAction("Index", "Home");
     }
 }
