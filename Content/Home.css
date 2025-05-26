@@ -96,8 +96,7 @@
      #about-us img {
           width: 50px;
           height: auto;
-          filter: brightness(0) saturate(100%) invert(40%) sepia(11%) saturate(1466%) hue-rotate(65deg) brightness(90%) contrast(90%);
-          margin-bottom: 10px;
+          
      }
 
      #about-us .text-muted {
