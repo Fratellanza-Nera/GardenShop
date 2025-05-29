@@ -32,3 +32,5 @@ namespace GardenShop.Services
         }
     }
 }
+
+// This code defines a UserService class that handles user registration and login functionality.
