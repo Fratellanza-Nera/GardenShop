@@ -9,9 +9,9 @@ namespace GardenShop.Models
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext() : base("DefaultConnection") { }
+          public ApplicationDbContext() : base("GardenShop") { }
 
-        public DbSet<Product> Products { get; set; }
+          public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }
