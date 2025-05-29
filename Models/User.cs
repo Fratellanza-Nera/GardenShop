@@ -9,7 +9,7 @@ namespace GardenShop.Models
     {
         public int Id { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; } // Хранится в открытом виде, можно заменить на хэш позже
-    }
+        public string Password { get; set; } // Parola este salvată ca hash MD5 cu salt "twutm2018"
+     }
 }
 

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using GardenShop.Data;
 using GardenShop.Models;
+using System.Security.Cryptography; 
+using System.Text;                 
+
 
 namespace GardenShop.Services
 {
@@ -16,19 +19,35 @@ namespace GardenShop.Services
             _context = new ApplicationDbContext();
         }
 
-        public bool Register(string username, string password)
+
+          private string HashPassword(string password)
+          {
+               using (var md5 = System.Security.Cryptography.MD5.Create())
+               {
+                    var inputBytes = System.Text.Encoding.ASCII.GetBytes(password + "twutm2018"); // salt
+                    var hashBytes = md5.ComputeHash(inputBytes);
+                    return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+               }
+          }
+
+          public bool Register(string username, string password)
         {
             if (_context.Users.Any(u => u.Username == username))
                 return false;
 
-            _context.Users.Add(new User { Username = username, Password = password });
-            _context.SaveChanges();
+               string hashedPassword = HashPassword(password);
+
+               _context.Users.Add(new User { Username = username, Password = hashedPassword });
+
+               _context.SaveChanges();
             return true;
         }
 
         public bool Login(string username, string password)
         {
-            return _context.Users.Any(u => u.Username == username && u.Password == password);
+               string hashedPassword = HashPassword(password); 
+
+               return _context.Users.Any(u => u.Username == username && u.Password == password);
         }
     }
 }
