@@ -9,7 +9,7 @@ namespace GardenShop.Services
         private static List<Product> _products = new List<Product>
         {
             new Product { Id = 1, Name = "Apple Tree", Category = "Trees", Description = "Green apple tree", ImageUrl = "/img/AppleTree.png", Price = 25 },
-            new Product { Id = 2, Name = "Roses", Category = "Flowers", Description = "Red rose", ImageUrl = "/img/Rose.png", Price = 10 },
+            new Product { Id = 2, Name = "Rose", Category = "Flowers", Description = "Red rose", ImageUrl = "/img/Rose.png", Price = 10 },
             new Product { Id = 3, Name = "Shovel", Category = "Tools", Description = "Strong metal shovel", ImageUrl = "/img/shovel.png", Price = 15 }
         };
 
