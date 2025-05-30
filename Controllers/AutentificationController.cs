@@ -17,7 +17,7 @@ public class AutentificationController : Controller
         if (_userService.Login(username, password))
         {
             Session["Username"] = username;
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Home", "Home");
         }
 
         ViewBag.Error = "Invalid username or password.";
@@ -32,7 +32,7 @@ public class AutentificationController : Controller
         if (_userService.Register(username, password))
         {
             Session["Username"] = username;
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Autentification");
         }
 
         ViewBag.Error = "Username already exists.";
@@ -42,6 +42,6 @@ public class AutentificationController : Controller
     public ActionResult Logout()
     {
         Session.Clear();
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Login", "Autentification");
     }
 }
